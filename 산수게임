@@ -1,0 +1,44 @@
+package whyrano;
+import java.util.Calendar;
+import java.util.Scanner;
+public class MiniGame {
+	public static void main(String[] args) {
+		System.out.println("난 덧셈악마다. 문제를 맞추지 못한다면 멀쩡히 나가지 못할거야.");
+		
+		int a, b, c;
+		long startTime, endTime, time;
+		String ans, userAns;
+		Scanner sc;
+		
+		while(true) {
+			a = (int) (Math.random() * 10);
+			b = (int) (Math.random() * 10);
+			c = a + b;
+			ans = Integer.toString(c);
+			
+			System.out.println(a + "+" + b + "는?");
+			startTime = Calendar.getInstance().getTimeInMillis();
+			
+			sc = new Scanner(System.in);
+			userAns = sc.nextLine();
+			
+			if(ans.equals(userAns)) {
+				endTime = Calendar.getInstance().getTimeInMillis();
+				time = (endTime - startTime) / 1000;
+				System.out.println("똑똑하구나." + time + "초 만에 맞췄어. "
+						+ "더 풀어보고 싶다면 다음 문제를 풀어보고, 나가고 싶다면 e를 눌러."
+						+ "하지만 다음 문제에서 틀린다면 넌 벌을 받게 될거야.");
+			}else if ("e".equals(userAns)) {
+				System.out.println("안녕. 잘가!");
+				sc.close();
+				return;
+			}else {
+				System.out.println("멍청하긴. 틀렸어. 넌 남아서 매일 기탄수학 1권씩 풀어야돼."
+						+ "모든 레벨을 다 풀기 전까진 못 나가.");
+				return;
+			}
+			
+		}
+	}
+
+}
